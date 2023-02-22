@@ -1,3 +1,9 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * homework3
  */
@@ -51,5 +57,13 @@ public class homework3 {
         for(int rr = j; rr < right; rr++) { // Если в правом массиве остался элемент - добавляем его в итоговый массив
             arr[idx++] = r[rr];
         }
+    }
+    private static void printArray(CharSequence[] arr) throws FileNotFoundException{
+        System.out.println(Arrays.toString(arr));
+        File file = new File("output.txt");
+        PrintWriter pw = new PrintWriter(file);
+        String str = String.join(",", arr);
+        pw.println(str);
+        pw.close();
     }
 }
