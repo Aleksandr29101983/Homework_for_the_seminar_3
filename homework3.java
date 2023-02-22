@@ -27,6 +27,29 @@ public class homework3 {
     }
 
     private static void marge(int[] arr, int[] l, int[] r) { // метод слияния массива
-        
+        int left = l.length;
+        int right = r.length;
+        int i = 0;
+        int j = 0;
+        int idx = 0;
+
+        while(i < left && j < right) {
+            if(l[i] < r[j]) {
+                arr[idx] = l[i];
+                i++;
+                idx++;
+            }
+            else {
+                arr[idx] = r[j];
+                j++;
+                idx++;
+            }
+        }
+        for(int ll = i; ll < left; ll++) { // Если в левом массиве остался элемент - добавляем его в итоговый массив
+            arr[idx++] = l[ll];
+        }
+        for(int rr = j; rr < right; rr++) { // Если в правом массиве остался элемент - добавляем его в итоговый массив
+            arr[idx++] = r[rr];
+        }
     }
 }
