@@ -59,6 +59,7 @@ public class homework3 {
             arr[idx++] = r[rr];
         }
     }
+    
     private static void printArray(int [] arr) throws FileNotFoundException{
         System.out.println(Arrays.toString(arr));
         File file = new File("output.txt");
