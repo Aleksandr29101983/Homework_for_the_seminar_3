@@ -3,13 +3,14 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-
 /**
  * homework3
  */
 public class homework3 {
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws FileNotFoundException {
+        int[] arr = readFile();        
+        mergeSort(arr);
+        printArray(arr);
     }
 
     private static void mergeSort(int[] arr) { // метод деления массива
@@ -58,12 +59,25 @@ public class homework3 {
             arr[idx++] = r[rr];
         }
     }
-    private static void printArray(CharSequence[] arr) throws FileNotFoundException{
+    private static void printArray(int [] arr) throws FileNotFoundException{
         System.out.println(Arrays.toString(arr));
         File file = new File("output.txt");
         PrintWriter pw = new PrintWriter(file);
-        String str = String.join(",", arr);
+        String str = Arrays.toString(arr);
         pw.println(str);
         pw.close();
+    }
+
+    private static int[] readFile() throws FileNotFoundException {
+        File file = new File("input.txt");
+        Scanner scanner = new Scanner(file);
+        String[] stringArray = scanner.nextLine().split(",");
+        int[] intArray = new int[stringArray.length];
+
+        for(int i = 0; i < stringArray.length; i++){
+            intArray[i] = Integer.parseInt(stringArray[i]);
+        }
+        scanner.close();
+        return intArray;
     }
 }
